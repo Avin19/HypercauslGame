@@ -1,20 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CrowdSystem : MonoBehaviour
 {
    [SerializeField] private float radius, angle;
    [SerializeField] private TextMeshProUGUI countText;
 
-
-   void Update()
+   private void Start()
    {
       PlacementOfRunner();
    }
+
    void PlacementOfRunner()
    {
       int i = 0;
