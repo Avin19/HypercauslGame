@@ -1,13 +1,17 @@
 using UnityEngine;
 using TMPro;
-
+using System.Diagnostics;
+public enum BouseType
+{
+    Addition,
+    Difference,
+    Multiple,
+    Divided,
+}
 public class Door : MonoBehaviour
 {
     // Start is called before the first frame update
-    enum BouseType
-    {
-        Addition, Difference
-    }
+
     [Header(" Elemeets ")]
     [SerializeField] private TextMeshPro rightDoorText;
     [SerializeField] private TextMeshPro leftDoorText;
@@ -32,9 +36,13 @@ public class Door : MonoBehaviour
         {
             return BouseType.Difference;
         }
+        else if (index == 2)
+        {
+            return BouseType.Multiple;
+        }
         else
         {
-            return BouseType.Difference;
+            return BouseType.Divided;
         }
     }
 
@@ -42,34 +50,78 @@ public class Door : MonoBehaviour
     {
         rightDoorBouseAmount = Random.Range(1, 30);
         leftDoorBouseAmount = Random.Range(1, 30);
-        rightDoorBouseType = ReturnRandomEnum(Random.Range(0, 2));
-        leftDoorBouseType = ReturnRandomEnum(Random.Range(0, 2));
+        rightDoorBouseType = ReturnRandomEnum(Random.Range(0, 4));
+        leftDoorBouseType = ReturnRandomEnum(Random.Range(0, 4));
         ConfigureDoor();
 
     }
 
     private void ConfigureDoor()
     {
-        if (rightDoorBouseType == BouseType.Addition)
+
+        switch (rightDoorBouseType)
         {
-            materialRightDoorShader.SetColor("_DotsColor", bouseColor);
-            rightDoorText.text = "+" + rightDoorBouseAmount;
-        }
-        else if (rightDoorBouseType == BouseType.Difference)
-        {
-            materialRightDoorShader.SetColor("_DotsColor", penaltyColor);
-            rightDoorText.text = "-" + rightDoorBouseAmount;
-        }
-        if (leftDoorBouseType == BouseType.Difference)
-        {
-            materialLeftDoorShader.SetColor("_DotsColor", penaltyColor);
-            leftDoorText.text = "-" + leftDoorBouseAmount;
+            case BouseType.Addition:
+                materialRightDoorShader.SetColor("_DotsColor", bouseColor);
+                rightDoorText.text = "+" + rightDoorBouseAmount;
+                break;
+            case BouseType.Difference:
+                materialRightDoorShader.SetColor("_DotsColor", penaltyColor);
+                rightDoorText.text = "-" + rightDoorBouseAmount;
+                break;
+            case BouseType.Multiple:
+                materialRightDoorShader.SetColor("_DotsColor", penaltyColor);
+                rightDoorText.text = "x" + rightDoorBouseAmount;
+                break;
+            case BouseType.Divided:
+                materialRightDoorShader.SetColor("_DotsColor", penaltyColor);
+                rightDoorText.text = "/" + rightDoorBouseAmount;
+                break;
+
 
         }
-        else if (leftDoorBouseType == BouseType.Addition)
+        switch (leftDoorBouseType)
         {
-            materialLeftDoorShader.SetColor("_DotsColor", bouseColor);
-            leftDoorText.text = "+" + leftDoorBouseAmount;
+            case BouseType.Addition:
+                materialLeftDoorShader.SetColor("_DotsColor", bouseColor);
+                leftDoorText.text = "+" + leftDoorBouseAmount;
+                break;
+            case BouseType.Difference:
+                materialLeftDoorShader.SetColor("_DotsColor", penaltyColor);
+                leftDoorText.text = "-" + leftDoorBouseAmount;
+                break;
+            case BouseType.Multiple:
+                materialLeftDoorShader.SetColor("_DotsColor", penaltyColor);
+                leftDoorText.text = "x" + leftDoorBouseAmount;
+                break;
+            case BouseType.Divided:
+                materialLeftDoorShader.SetColor("_DotsColor", penaltyColor);
+                leftDoorText.text = "/" + leftDoorBouseAmount;
+                break;
+
+        }
+
+    }
+    public int GetDoorAmount(float xPosition)
+    {
+        if (xPosition < 0)
+        {
+            return rightDoorBouseAmount;
+        }
+        else
+        {
+            return leftDoorBouseAmount;
+        }
+    }
+    public BouseType GetBouseType(float xPosition)
+    {
+        if (xPosition < 0)
+        {
+            return rightDoorBouseType;
+        }
+        else
+        {
+            return leftDoorBouseType;
         }
     }
 
