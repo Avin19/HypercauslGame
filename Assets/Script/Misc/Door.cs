@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System.Diagnostics;
 public enum BouseType
 {
     Addition,
@@ -15,11 +14,14 @@ public class Door : MonoBehaviour
     [Header(" Elemeets ")]
     [SerializeField] private TextMeshPro rightDoorText;
     [SerializeField] private TextMeshPro leftDoorText;
+
     [Header(" Setting ")]
     [SerializeField] private BouseType rightDoorBouseType;
     [SerializeField] private int rightDoorBouseAmount;
     [SerializeField] private BouseType leftDoorBouseType;
     [SerializeField] private int leftDoorBouseAmount;
+
+    [SerializeField] private int levelMultipler;
     [Header(" Material")]
     [SerializeField] private Color bouseColor;
     [SerializeField] private Color penaltyColor;
@@ -48,11 +50,14 @@ public class Door : MonoBehaviour
 
     public void Trigger()
     {
-        rightDoorBouseAmount = Random.Range(1, 30);
-        leftDoorBouseAmount = Random.Range(1, 30);
+        rightDoorBouseAmount = Random.Range(1, 5 * levelMultipler);
+        leftDoorBouseAmount = Random.Range(1, 5 * levelMultipler);
         rightDoorBouseType = ReturnRandomEnum(Random.Range(0, 4));
         leftDoorBouseType = ReturnRandomEnum(Random.Range(0, 4));
+        transform.GetComponent<BoxCollider>().enabled = true;
+
         ConfigureDoor();
+
 
     }
 
@@ -106,23 +111,28 @@ public class Door : MonoBehaviour
     {
         if (xPosition < 0)
         {
-            return rightDoorBouseAmount;
+            return leftDoorBouseAmount;
         }
         else
         {
-            return leftDoorBouseAmount;
+            return rightDoorBouseAmount;
         }
     }
     public BouseType GetBouseType(float xPosition)
     {
         if (xPosition < 0)
         {
-            return rightDoorBouseType;
+            return leftDoorBouseType;
         }
         else
         {
-            return leftDoorBouseType;
+            return rightDoorBouseType;
         }
+    }
+
+    public void Disable()
+    {
+        transform.GetComponent<BoxCollider>().enabled = false;
     }
 
 

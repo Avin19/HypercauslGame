@@ -10,11 +10,14 @@ public class PlayerAnimationController : MonoBehaviour
 
 
     }
-    void Start()
+    private void OnEnable()
     {
         PlayerController.Instance.PlayerAnimator += AnimationPerformed;
     }
-
+    private void OnDisable()
+    {
+        PlayerController.Instance.PlayerAnimator -= AnimationPerformed;
+    }
     private void AnimationPerformed(object sender, string e)
     {
         animator.SetBool(e, true);
