@@ -22,6 +22,7 @@ public class CrowdSystem : MonoBehaviour
       countText.SetText(i.ToString());
    }
 
+   // prevent overlapping 
    private Vector3 ChildrenPosition(int index)
    {
       float x = radius * Mathf.Sqrt(index) * Mathf.Cos(Mathf.Deg2Rad * angle * index);
