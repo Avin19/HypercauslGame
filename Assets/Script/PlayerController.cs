@@ -54,7 +54,13 @@ public class PlayerController : MonoBehaviour
             xScreenDifference *= slideSpeed;
             // Now that we have the difference between the clicked position and the actual position of the screen 
 
-            transform.position = clickedPlayerPsotion + Vector3.right * xScreenDifference;
+            // making the z position indpenedent of these changes . The changes are implemented on the x axis so . the player wont run on the spot . 
+            Vector3 position = transform.position;
+            position.x = clickedPlayerPsotion.x + xScreenDifference;
+            transform.position = position;
+
+
+            // transform.position = clickedPlayerPsotion + Vector3.right * xScreenDifference;
 
         }
     }
