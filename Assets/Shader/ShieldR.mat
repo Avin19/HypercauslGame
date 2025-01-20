@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shield
+  m_Name: ShieldR
   m_Shader: {fileID: -6465566751694194690, guid: bdcf5454623d34545aba6aea1defd236, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -142,7 +142,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DotTiling: {r: 12.61, g: 7.6, b: 0, a: 0}
-    - _DotsColor: {r: 0, g: 1.7924529, b: 0.5295597, a: 0}
+    - _DotsColor: {r: 0.91764706, g: 0.07450977, b: 0.091603674, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NoiseSpped: {r: 0, g: 0.2, b: 0, a: 0}

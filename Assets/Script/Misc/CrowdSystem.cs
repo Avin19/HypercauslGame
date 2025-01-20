@@ -1,17 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
-
 using UnityEngine;
-using UnityEngine.UI;
+
+
+namespace HyperCausal.Misc
+{
 
 public class CrowdSystem : MonoBehaviour
 {
-   [SerializeField] private float radius, angle;
+   [Header(" Elements ")]
+   [SerializeField] private GameObject runnerPf;
+
+   [Header(" Setting ")]
+   [SerializeField] private float radius;
+   [SerializeField] private float angle;
    [SerializeField] private TextMeshProUGUI countText;
 
-
-   void Update()
+   private void Start()
    {
       PlacementOfRunner();
    }
@@ -26,12 +31,65 @@ public class CrowdSystem : MonoBehaviour
       countText.SetText(i.ToString());
    }
 
+   // prevent overlapping 
    private Vector3 ChildrenPosition(int index)
    {
       float x = radius * Mathf.Sqrt(index) * Mathf.Cos(Mathf.Deg2Rad * angle * index);
       float z = radius * Mathf.Sqrt(index) * Mathf.Sin(Mathf.Deg2Rad * angle * index);
       return new Vector3(x, 0, z);
    }
+   public void ApplyBonus(int doorAmount, BouseType type)
+   {
+      switch (type)
+      {
+         case BouseType.Addition:
+            Debug.Log("Add");
+            AddRunners(doorAmount);
+            break;
+         case BouseType.Difference:
+            RemoveRunner(doorAmount);
+            break;
+         case BouseType.Multiple:
+            Debug.Log("Multiple");
+            int runnerToAdd = (transform.childCount * doorAmount) - transform.childCount;
+            AddRunners(runnerToAdd);
+            break;
+         case BouseType.Divided:
+            int runnerToRemove = transform.childCount - (transform.childCount / doorAmount);
+            RemoveRunner(runnerToRemove);
+            break;
+      }
+      PlacementOfRunner();
 
+   }
+
+   private void RemoveRunner(int doorAmount)
+   {
+      if (doorAmount < transform.childCount)
+      {
+         // Can implement object pooling here 
+         for (int i = 0; i < doorAmount; i++)
+         {
+            Transform runner = transform.GetChild(i);
+            runner.SetParent(null);
+            Destroy(runner.gameObject);
+         }
+      }
+      else
+      {
+         Debug.Log("Game Over");
+      }
+   }
+
+   private void AddRunners(int doorAmount)
+   {
+      for (int i = 0; i < doorAmount; i++)
+      {
+         Instantiate(runnerPf, transform);
+
+
+      }
+   }
+}
 
 }

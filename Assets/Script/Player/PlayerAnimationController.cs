@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class PlayerAnimationController : MonoBehaviour
 {
     private Animator animator;
@@ -10,11 +12,14 @@ public class PlayerAnimationController : MonoBehaviour
 
 
     }
-    void Start()
+    private void Start()
     {
         PlayerController.Instance.PlayerAnimator += AnimationPerformed;
     }
-
+    private void OnDisable()
+    {
+        PlayerController.Instance.PlayerAnimator -= AnimationPerformed;
+    }
     private void AnimationPerformed(object sender, string e)
     {
         animator.SetBool(e, true);
