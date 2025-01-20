@@ -1,9 +1,11 @@
 
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public static Action<GameState> onGameStateChanged;
     public enum GameState
     {
         Menu,
@@ -11,11 +13,11 @@ public class GameManager : MonoBehaviour
         LevelCompleted,
         GameOver
     }
-    private GameState state;
+    private GameState gameState;
 
     private void Awake()
     {
-        if(instance !=null)
+        if (instance != null)
         {
             Destroy(instance);
         }
@@ -26,17 +28,18 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SetGameState(GameState state)
     {
-
+        gameState = state;
+        onGameStateChanged?.Invoke(gameState);
     }
 }
