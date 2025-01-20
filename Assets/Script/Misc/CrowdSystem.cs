@@ -2,6 +2,10 @@ using System;
 using TMPro;
 using UnityEngine;
 
+
+namespace HyperCausal.Misc
+{
+
 public class CrowdSystem : MonoBehaviour
 {
    [Header(" Elements ")]
@@ -86,4 +90,6 @@ public class CrowdSystem : MonoBehaviour
 
       }
    }
+}
+
 }
