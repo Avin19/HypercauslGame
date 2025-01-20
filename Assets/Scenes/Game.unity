@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pfPlatform: {fileID: 5283758643577220611, guid: 8aeae7c575fb63e4597ad53ed0d7f02e, type: 3}
+  pfFinishLine: {fileID: 5283758643577220611, guid: 7cea7a8dac843f44496c9a935f1ec2ea, type: 3}
 --- !u!1 &350091958
 GameObject:
   m_ObjectHideFlags: 0

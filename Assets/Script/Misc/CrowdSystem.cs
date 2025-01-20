@@ -51,6 +51,8 @@ public class CrowdSystem : MonoBehaviour
             AddRunners(runnerToAdd);
             break;
          case BouseType.Divided:
+            int runnerToRemove = transform.childCount - (transform.childCount / doorAmount);
+            RemoveRunner(runnerToRemove);
             break;
       }
       PlacementOfRunner();
@@ -64,12 +66,14 @@ public class CrowdSystem : MonoBehaviour
          // Can implement object pooling here 
          for (int i = 0; i < doorAmount; i++)
          {
-            Destroy(transform.GetChild(i).gameObject);
+            Transform runner = transform.GetChild(i);
+            runner.SetParent(null);
+            Destroy(runner.gameObject);
          }
       }
       else
       {
-         Debug.Log(" Game Over ");
+         Debug.Log("Game Over");
       }
    }
 

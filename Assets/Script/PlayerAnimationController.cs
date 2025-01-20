@@ -10,7 +10,7 @@ public class PlayerAnimationController : MonoBehaviour
 
 
     }
-    private void OnEnable()
+    private void Start()
     {
         PlayerController.Instance.PlayerAnimator += AnimationPerformed;
     }
