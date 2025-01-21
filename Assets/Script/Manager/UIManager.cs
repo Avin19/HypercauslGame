@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,7 @@ public class UIManager : MonoBehaviour
     [Header(" Element")]
     // Start is called before the first frame update
     [SerializeField] private Button playButton;
+    [SerializeField] private GameObject menuPanel;
     void Start()
     {
 
@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     public void PlayButtonPressed()
     {
-        GameManager.instance.SetGameState(GameManager.GameState.Game);
+        HyperCausal.Manager.GameManager.instance.SetGameState(GameState.Game);
+        menuPanel.SetActive(false);
+
     }
 }
