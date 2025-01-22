@@ -44,4 +44,4 @@ To run or modify this project, the following are required:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/hyper-casual-game.git
+   git clone git@github.com:Avin19/HypercauslGame.git
