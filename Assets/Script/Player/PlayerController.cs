@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float slideSpeed = 2f;
     private float inputY;
     public event EventHandler<string> PlayerAnimator;
+    public event EventHandler<string> IdleAnimation;
 
     public static PlayerController Instance { get; private set; }
 
@@ -43,10 +44,12 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         PlayerAnimator?.Invoke(this, "isRunning");
 
+
     }
     private void StopMoving()
     {
         canMove = false;
+        IdleAnimation?.Invoke(this, "isRunning");
     }
     private void Update()
     {
