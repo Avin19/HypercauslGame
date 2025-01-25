@@ -3,24 +3,18 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] private Transform pfPlatform;
-    [SerializeField] private Transform pfFinishLine;
+
+    [SerializeField] private LevelsDesign levelsDesign;
 
     private void Awake()
     {
-        for (int i = 0; i < 10; i++)
+
+
+        for (int i = 0; i < levelsDesign.panels.Capacity; i++)
         {
-            if (i >= 9)
-            {
-                Transform pf = Instantiate(pfFinishLine, new Vector3(0f, 0f, i * 50), Quaternion.identity, transform.parent);
-            }
-            else
-            {
 
-                Transform pf = Instantiate(pfPlatform, new Vector3(0f, 0f, i * 50), Quaternion.identity, transform.parent);
-                pf.GetComponent<Door>().Trigger();
+            Transform pf = Instantiate(levelsDesign.panels[i], new Vector3(0f, 0f, i * 50), Quaternion.identity, transform.parent);
 
-            }
         }
     }
 }
