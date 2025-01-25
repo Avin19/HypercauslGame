@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18696404}
-  - component: {fileID: 18696405}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -155,19 +154,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &18696405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18696403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9852d5ac31910d043acdbf8b6a9a4896, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelsDesign: {fileID: 11400000, guid: 3917eb0257646164f8e0a979bb1a7f57, type: 2}
 --- !u!1 &128234284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9e3cb6f0986e046be52388136f5d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLevel: 0
+  levels: {fileID: 11400000, guid: 90a38f9fa828941468fd9992ee8cef78, type: 2}
+  environmentTransform: {fileID: 18696404}
 --- !u!1 &1875051584
 GameObject:
   m_ObjectHideFlags: 0
