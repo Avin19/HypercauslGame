@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5834022845947616660}
-  searchRadius: 5
-  moveSpeed: 2
+  searchRadius: 8
+  moveSpeed: 11
