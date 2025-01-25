@@ -45,8 +45,10 @@ public class Enemy : MonoBehaviour
             return;
         }
         transform.position = Vector3.MoveTowards(transform.position, targetRunner.position, Time.deltaTime * moveSpeed);
+        // Enemy will look at the player
+        //transform.rotation = Quaternion.LookRotation(targetRunner.position);
 
-        if (Vector3.Distance(transform.position, targetRunner.position) > 0.1f)
+        if (Vector3.Distance(transform.position, targetRunner.position) < 0.5f)
         {
             Destroy(targetRunner.gameObject);
             Destroy(gameObject);
@@ -75,6 +77,6 @@ public class Enemy : MonoBehaviour
     private void StartRunningTowardsTarget()
     {
         state = EnemyState.Running;
-        animator.SetBool("IsRunning", true);
+        animator.SetBool("isRunning", true);
     }
 }
