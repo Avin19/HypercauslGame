@@ -5,7 +5,7 @@ public enum EnemyState
     Idle,
     Running
 }
-public class Enemy : MonoBehaviour
+public class EnemyRunner : MonoBehaviour
 {
     [Header(" Element")]
     [SerializeField] private Animator animator;
@@ -50,7 +50,9 @@ public class Enemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetRunner.position) < 0.5f)
         {
+
             Destroy(targetRunner.gameObject);
+
             Destroy(gameObject);
         }
     }

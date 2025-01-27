@@ -1,10 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-
-
-namespace HyperCausal.Misc
-{
 
 public class CrowdSystem : MonoBehaviour
 {
@@ -20,7 +15,7 @@ public class CrowdSystem : MonoBehaviour
    {
       PlacementOfRunner();
    }
-   void PlacementOfRunner()
+   public void PlacementOfRunner()
    {
       int i = 0;
       foreach (Transform child in transform.GetComponentInChildren<Transform>())
@@ -77,7 +72,8 @@ public class CrowdSystem : MonoBehaviour
       }
       else
       {
-         Debug.Log("Game Over");
+
+         GameManager.instance.SetGameState(GameState.GameOver);
       }
    }
 
@@ -92,4 +88,3 @@ public class CrowdSystem : MonoBehaviour
    }
 }
 
-}

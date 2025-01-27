@@ -1,5 +1,7 @@
 
 using UnityEngine;
+
+
 public class PlatformGenerator
 
 {
@@ -7,7 +9,7 @@ public class PlatformGenerator
     private Transform parentTransform;
 
 
-    public void SetLevel(LevelsDesign _level, Transform _transform)
+    public PlatformGenerator(LevelsDesign _level, Transform _transform)
     {
         this.level = _level;
         this.parentTransform = _transform;
@@ -21,7 +23,9 @@ public class PlatformGenerator
         {
 
             Transform pf = GameObject.Instantiate(level.panels[i], new Vector3(0f, 0f, i * 50), Quaternion.identity, parentTransform);
+            // pf.GetComponent<Door>().Trigger();
 
         }
     }
 }
+

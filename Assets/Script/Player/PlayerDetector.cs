@@ -1,11 +1,9 @@
 using UnityEngine;
 
-namespace HyperCausal.Player
-{ 
 public class PlayerDetector : MonoBehaviour
 {
-        [Header(" Elements ")]
-        [SerializeField] private HyperCausal.Misc.CrowdSystem crowdSystem;
+    [Header(" Elements ")]
+    [SerializeField] private CrowdSystem crowdSystem;
     private void Update()
     {
         PlayerDetected();
@@ -30,11 +28,10 @@ public class PlayerDetector : MonoBehaviour
 
 
             if (colliders[i].tag == "FinishLine")
-                {
-                    Debug.Log(" Reached Finish Line ");
-                }
+            {
+                GameManager.instance.SetGameState(GameState.LevelCompleted);
+            }
         }
     }
 }
 
-}

@@ -60,6 +60,10 @@ public class Door : MonoBehaviour
 
 
     }
+    private void Start()
+    {
+        Trigger();
+    }
 
     private void ConfigureDoor()
     {

@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         Instance = this;
 
     }
-    private void OnEnable() => HyperCausal.Manager.GameManager.onGameStateChanged += GameStateChangeCallback;
+    private void OnEnable() => GameManager.onGameStateChanged += GameStateChangeCallback;
 
     private void GameStateChangeCallback(GameState state)
     {
