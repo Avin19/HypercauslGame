@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float slideSpeed = 2f;
     private float inputY;
-    public event EventHandler<string> PlayerAnimator;
-    public event EventHandler<string> IdleAnimation;
+    public event EventHandler<string> PlayerAnimatorPerformAnimation;
+    public event EventHandler<string> PlayerAnimatorStopAnimation;
 
     public static PlayerController Instance { get; private set; }
 
@@ -25,10 +25,26 @@ public class PlayerController : MonoBehaviour
         Instance = this;
 
     }
-    private void OnEnable() => HyperCausal.Manager.GameManager.onGameStateChanged += GameStateChangeCallback;
+    private void OnEnable() => GameManager.onGameStateChanged += GameStateChangeCallback;
 
     private void GameStateChangeCallback(GameState state)
     {
+        // Animation triggers are bad here need to imporve this !!!!
+        switch (state)
+        {
+            case GameState.LevelCompleted:
+                StopMoving();
+                PlayerAnimatorPerformAnimation?.Invoke(this, "IsVictory");
+                PlayerAnimatorStopAnimation?.Invoke(this, "isRunning");
+                break;
+            case GameState.Game:
+                PlayerAnimatorStopAnimation?.Invoke(this, "IsVictory");
+                PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
+                StartMoving();
+                break;
+            case GameState.Menu:
+                break;
+        }
         if (state == GameState.Game)
         {
             StartMoving();
@@ -42,20 +58,20 @@ public class PlayerController : MonoBehaviour
     private void StartMoving()
     {
         canMove = true;
-        PlayerAnimator?.Invoke(this, "isRunning");
+
 
 
     }
     private void StopMoving()
     {
         canMove = false;
-        IdleAnimation?.Invoke(this, "isRunning");
+        PlayerAnimatorStopAnimation?.Invoke(this, "isRunning");
     }
     private void Update()
     {
         if (canMove)
         {
-
+            PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
             inputY = Input.GetAxisRaw("Horizontal");
             Movement();
             ManageControl();
@@ -64,7 +80,7 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
 
-        PlayerAnimator?.Invoke(this, "isRunning");
+        PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
         Vector3 moveDir = new Vector3(inputY, 0f, 1f).normalized;
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 
