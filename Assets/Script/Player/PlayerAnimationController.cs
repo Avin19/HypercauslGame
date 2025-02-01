@@ -14,13 +14,17 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void Start()
     {
-        PlayerController.Instance.PlayerAnimator += AnimationPerformed;
-        PlayerController.Instance.IdleAnimation += IdleAnimation;
+        PlayerController.Instance.PlayerAnimatorPerformAnimation += AnimationPerformed;
+        PlayerController.Instance.PlayerAnimatorStopAnimation += IdleAnimation;
     }
     private void OnDisable()
     {
-        PlayerController.Instance.PlayerAnimator -= AnimationPerformed;
-        PlayerController.Instance.IdleAnimation -= IdleAnimation;
+        PlayerController.Instance.PlayerAnimatorPerformAnimation -= AnimationPerformed;
+        PlayerController.Instance.PlayerAnimatorStopAnimation -= IdleAnimation;
+    }
+    public void PerformAnimation(string e, bool b)
+    {
+        animator.SetBool(e, b);
     }
     private void AnimationPerformed(object sender, string e)
     {

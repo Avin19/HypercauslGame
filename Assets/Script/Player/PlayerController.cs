@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     private void StopMoving()
     {
         canMove = false;
-        IdleAnimation?.Invoke(this, "isRunning");
+        PlayerAnimatorStopAnimation?.Invoke(this, "isRunning");
     }
     private void Update()
     {
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
 
-        PlayerAnimator?.Invoke(this, "isRunning");
+        PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
         Vector3 moveDir = new Vector3(inputY, 0f, 1f).normalized;
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 
