@@ -33,6 +33,11 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetBool(e, false);
     }
 
+    public void PerformAnimation(string e, bool b)
+    {
+        animator.SetBool(e, b);
+    }
+
 
 }
 

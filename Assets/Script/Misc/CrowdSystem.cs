@@ -25,7 +25,11 @@ public class CrowdSystem : MonoBehaviour
       }
       countText.SetText(i.ToString());
    }
-
+   private void Update()
+   {
+      if (transform.childCount > 0) return;
+      GameManager.instance.SetGameState(GameState.GameOver);
+   }
    // prevent overlapping 
    private Vector3 ChildrenPosition(int index)
    {
@@ -82,6 +86,7 @@ public class CrowdSystem : MonoBehaviour
       for (int i = 0; i < doorAmount; i++)
       {
          Transform player = Instantiate(runnerPf, transform).transform;
+
 
 
 
