@@ -34,11 +34,11 @@ public class PlayerController : MonoBehaviour
         {
             case GameState.LevelCompleted:
                 StopMoving();
-                PlayerAnimatorPerformAnimation?.Invoke(this, "IsVictory");
+                // PlayerAnimatorPerformAnimation?.Invoke(this, "IsVictory");
                 PlayerAnimatorStopAnimation?.Invoke(this, "isRunning");
                 break;
             case GameState.Game:
-                PlayerAnimatorStopAnimation?.Invoke(this, "IsVictory");
+                // PlayerAnimatorStopAnimation?.Invoke(this, "IsVictory");
                 PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
                 StartMoving();
                 break;

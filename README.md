@@ -1,47 +1,33 @@
-# Hyper Casual Mobile Game Development
 
-Welcome to the **Hyper Casual Mobile Game** project! This repository contains the source code and resources for a fun and engaging hyper-casual mobile game developed using Unity.
+# Unity Project Setup
 
-## About the Project
-
-This project is based on a course that teaches the fundamentals of game development while creating a complete mobile game from scratch. The game demonstrates key aspects of Unity development:
-
-- **Creating and managing variables and methods**
-- **Implementing and organizing game logic**
-- **Working with 3D models and animations**
-- **Designing and developing user interfaces**
-- **Controlling objects using touch inputs**
-- **Detecting collisions and applying game logic**
-- **Managing game flow using manager scripts**
-
-The result is a fully functional mobile game ready to play and publish on the App Store or Google Play Store.
+## Description
+This project is a Unity3D-based game setup tool designed to streamline development by automating the creation of folders, downloading essential scripts, and managing Unity packages.
 
 ## Features
+- Auto-create project structure (Scripts, Materials, Prefabs, etc.).
+- Download essential Unity C# scripts from a remote repository.
+- Automatically download a `.gitignore` file for Unity projects.
+- Manage Unity package dependencies (add/remove packages).
+- Generate a `README.md` file with basic project information.
 
-- **Interactive Gameplay**: Objects are controlled with touch inputs.
-- **3D Models & Animations**: Human-like characters are animated.
-- **Collision Detection**: Collision-based game logic is implemented.
-- **UI Design**: Basic UI elements enhance the user experience.
-- **Game Managers**: Various aspects of the game are controlled efficiently.
-- **Mobile Ready**: Optimized for iOS and Android platforms.
+## Gameplay
+Provide a brief explanation of the game mechanics.
 
-## Skills Developed
+## PlantUML Diagrams
+### Class Diagram
+![Class Diagram](include.png)
 
-This project involves:
-- Building and animating 3D models.
-- Detecting and responding to player actions.
-- Creating seamless game flow with manager scripts.
-- Developing UI elements for mobile games.
-- Utilizing Unity's environment and tools.
+## Screenshots
+<!-- ![Screenshot 2](screenshots/screenshot2.png) -->
 
-## Requirements
+## Development
+This project is developed using Unity3D and C#. Contributions are welcome, including bug fixes, feature enhancements, and optimizations.
 
-To run or modify this project, the following are required:
-- **Unity** (version 2021 or later recommended)
-- A basic understanding of C# programming
+## Credits
+This game remake is created by Developer Name.
 
-## Getting Started
+## Feedback
+If you have any feedback, suggestions, or bug reports, please open an issue on GitHub or contact us directly.
 
-1. Clone the repository:
-   ```bash
-   git clone git@github.com:Avin19/HypercauslGame.git
+Prepare for liftoff and enjoy your journey to the International Space Station! 🚀
