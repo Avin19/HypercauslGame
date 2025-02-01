@@ -14,13 +14,13 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void Start()
     {
-        PlayerController.Instance.PlayerAnimator += AnimationPerformed;
-        PlayerController.Instance.IdleAnimation += IdleAnimation;
+        PlayerController.Instance.PlayerAnimatorPerformAnimation += AnimationPerformed;
+        PlayerController.Instance.PlayerAnimatorStopAnimation += IdleAnimation;
     }
     private void OnDisable()
     {
-        PlayerController.Instance.PlayerAnimator -= AnimationPerformed;
-        PlayerController.Instance.IdleAnimation -= IdleAnimation;
+        PlayerController.Instance.PlayerAnimatorPerformAnimation -= AnimationPerformed;
+        PlayerController.Instance.PlayerAnimatorStopAnimation -= IdleAnimation;
     }
     private void AnimationPerformed(object sender, string e)
     {

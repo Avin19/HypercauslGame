@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 
@@ -8,8 +9,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float slideSpeed = 2f;
     private float inputY;
-    public event EventHandler<string> PlayerAnimator;
-    public event EventHandler<string> IdleAnimation;
+    public event EventHandler<string> PlayerAnimatorPerformAnimation;
+    public event EventHandler<string> PlayerAnimatorStopAnimation;
+
+
 
     public static PlayerController Instance { get; private set; }
 
@@ -29,6 +32,20 @@ public class PlayerController : MonoBehaviour
 
     private void GameStateChangeCallback(GameState state)
     {
+        // Animation triggers are bad here need to imporve this !!!!
+        switch (state)
+        {
+            case GameState.LevelCompleted:
+                StopMoving();
+                PlayerAnimatorPerformAnimation?.Invoke(this, "IsVictory");
+                break;
+            case GameState.Game:
+                PlayerAnimatorStopAnimation?.Invoke(this, "IsVictory");
+                StartMoving();
+                break;
+            case GameState.Menu:
+                break;
+        }
         if (state == GameState.Game)
         {
             StartMoving();
@@ -42,14 +59,14 @@ public class PlayerController : MonoBehaviour
     private void StartMoving()
     {
         canMove = true;
-        PlayerAnimator?.Invoke(this, "isRunning");
+        PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
 
 
     }
     private void StopMoving()
     {
         canMove = false;
-        IdleAnimation?.Invoke(this, "isRunning");
+        PlayerAnimatorStopAnimation?.Invoke(this, "isRunning");
     }
     private void Update()
     {
@@ -64,7 +81,7 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
 
-        PlayerAnimator?.Invoke(this, "isRunning");
+
         Vector3 moveDir = new Vector3(inputY, 0f, 1f).normalized;
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 
