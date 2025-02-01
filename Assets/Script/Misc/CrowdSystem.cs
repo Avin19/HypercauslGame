@@ -81,7 +81,8 @@ public class CrowdSystem : MonoBehaviour
    {
       for (int i = 0; i < doorAmount; i++)
       {
-         Instantiate(runnerPf, transform);
+         Transform player = Instantiate(runnerPf, transform).transform;
+
 
 
       }

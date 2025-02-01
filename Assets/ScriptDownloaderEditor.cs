@@ -3,13 +3,11 @@ using UnityEngine;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 
 public class ScriptDownloaderEditor : EditorWindow
 {
-
     private bool createScripts = true;
     private bool createMaterials = true;
     private bool createMusic = true;
@@ -18,7 +16,40 @@ public class ScriptDownloaderEditor : EditorWindow
     private bool createTextures = true;
     private bool createEditor = true;
     private bool downloadGitIgnore = true;
-    private string readmeContent = "# My Unity Project\n\nThis is a README file for my Unity project.";
+
+    private string readmeContent =
+@"# Unity Project Setup
+
+## Description
+This project is a Unity3D-based game setup tool designed to streamline development by automating the creation of folders, downloading essential scripts, and managing Unity packages.
+
+## Features
+- Auto-create project structure (Scripts, Materials, Prefabs, etc.).
+- Download essential Unity C# scripts from a remote repository.
+- Automatically download a `.gitignore` file for Unity projects.
+- Manage Unity package dependencies (add/remove packages).
+- Generate a `README.md` file with basic project information.
+
+## Gameplay
+Provide a brief explanation of the game mechanics.
+
+## PlantUML Diagrams
+### Class Diagram
+![Class Diagram](include.png)
+
+## Screenshots
+<!-- ![Screenshot 2](screenshots/screenshot2.png) -->
+
+## Development
+This project is developed using Unity3D and C#. Contributions are welcome, including bug fixes, feature enhancements, and optimizations.
+
+## Credits
+This game remake is created by Developer Name.
+
+## Feedback
+If you have any feedback, suggestions, or bug reports, please open an issue on GitHub or contact us directly.
+
+Prepare for liftoff and enjoy your journey to the International Space Station! 🚀";
 
     [MenuItem("Tools/Setup/Script Downloader")]
     public static void ShowWindow()
@@ -28,8 +59,6 @@ public class ScriptDownloaderEditor : EditorWindow
 
     private void OnGUI()
     {
-       
-
         GUILayout.Label("Folder Setup", EditorStyles.boldLabel);
         createScripts = EditorGUILayout.Toggle("Scripts", createScripts);
         createMaterials = EditorGUILayout.Toggle("Materials", createMaterials);
@@ -73,8 +102,6 @@ public class ScriptDownloaderEditor : EditorWindow
         }
     }
 
-
-   
     private void CreateSelectedFolders()
     {
         string projectPath = Application.dataPath;
@@ -157,6 +184,14 @@ public class ScriptDownloaderEditor : EditorWindow
         UnityEngine.Debug.Log("All scripts downloaded successfully.");
     }
 
+    public static async Task GettingGitIgnore()
+    {
+        string folderPath = Application.dataPath.Replace("/Assets", "");
+        string fileUrl = "https://raw.githubusercontent.com/Avin19/UnityTools/main/.gitignore";
+        string filePath = Path.Combine(folderPath, ".gitignore");
+        await DownloadFileAsync(fileUrl, filePath);
+        UnityEngine.Debug.Log("Downloaded .gitignore file.");
+    }
     private static async Task DownloadFileAsync(string url, string filePath)
     {
         using (HttpClient client = new HttpClient())
@@ -183,16 +218,6 @@ public class ScriptDownloaderEditor : EditorWindow
             }
         }
     }
-
-    public static async Task GettingGitIgnore()
-    {
-        string folderPath = Application.dataPath.Replace("/Assets", "");
-        string fileUrl = "https://raw.githubusercontent.com/Avin19/UnityTools/main/.gitignore";
-        string filePath = Path.Combine(folderPath, ".gitignore");
-        await DownloadFileAsync(fileUrl, filePath);
-        UnityEngine.Debug.Log("Downloaded .gitignore file.");
-    }
-
     public static async Task AddRemoveNecessaryPackages()
     {
         string[] packagesToAdd = { "com.unity.ide.visualstudio", "com.unity.textmeshpro", "com.unity.inputsystem" };
@@ -203,7 +228,6 @@ public class ScriptDownloaderEditor : EditorWindow
 
         Resolve();
     }
-
     private static async Task AddPackages(string[] packages)
     {
         foreach (string package in packages)
@@ -241,7 +265,6 @@ public class ScriptDownloaderEditor : EditorWindow
             }
         }
     }
-
     private static void Resolve()
     {
         Client.Resolve();

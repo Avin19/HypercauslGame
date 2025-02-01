@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 
@@ -38,9 +37,11 @@ public class PlayerController : MonoBehaviour
             case GameState.LevelCompleted:
                 StopMoving();
                 PlayerAnimatorPerformAnimation?.Invoke(this, "IsVictory");
+                PlayerAnimatorStopAnimation?.Invoke(this, "isRunning");
                 break;
             case GameState.Game:
                 PlayerAnimatorStopAnimation?.Invoke(this, "IsVictory");
+                PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
                 StartMoving();
                 break;
             case GameState.Menu:
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
     private void StartMoving()
     {
         canMove = true;
-        PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
+
 
 
     }
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-
+            PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
             inputY = Input.GetAxisRaw("Horizontal");
             Movement();
             ManageControl();
