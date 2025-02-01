@@ -195,6 +195,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377483871}
     m_Modifications:
+    - target: {fileID: 5834022845947616660, guid: 43179cd3ae71ebf41943b00ece15ac1a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ab34bb59e1c019c4f8e41f28fd103114, type: 2}
     - target: {fileID: 7060306809175043352, guid: 43179cd3ae71ebf41943b00ece15ac1a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1763,9 +1767,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playButton: {fileID: 1188418125}
-  retryButton: {fileID: 462597109}
+  retryButton: {fileID: 0}
   menuPanel: {fileID: 1236755955}
-  gamePanel: {fileID: 606155191}
+  gamePanel: {fileID: 0}
 --- !u!1 &1514290381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,8 +1918,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameLevel: 0
-  levels: {fileID: 11400000, guid: 90a38f9fa828941468fd9992ee8cef78, type: 2}
-  environmentTransform: {fileID: 18696404}
+  levels: {fileID: 0}
+  environmentTransform: {fileID: 0}
 --- !u!1 &1875051584
 GameObject:
   m_ObjectHideFlags: 0
