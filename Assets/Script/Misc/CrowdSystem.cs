@@ -1,4 +1,4 @@
-using System;
+
 using TMPro;
 using UnityEngine;
 
@@ -77,6 +77,7 @@ namespace HyperCausal.Misc
          }
          else
          {
+
 
             GameManager.instance.SetGameState(GameState.GameOver);
          }

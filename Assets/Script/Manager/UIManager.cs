@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     public void PlayButtonPressed()
     {
-        HyperCausal.Manager.GameManager.instance.SetGameState(GameState.Game);
+        GameManager.instance.SetGameState(GameState.Game);
         menuPanel.SetActive(false);
 
     }

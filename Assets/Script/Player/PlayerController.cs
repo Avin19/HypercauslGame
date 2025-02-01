@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float slideSpeed = 2f;
     private float inputY;
-    public event EventHandler<string> PlayerAnimator;
-    public event EventHandler<string> IdleAnimation;
+    public event EventHandler<string> PlayerAnimatorPerformAnimation;
+    public event EventHandler<string> PlayerAnimatorStopAnimation;
 
     public static PlayerController Instance { get; private set; }
 
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         Instance = this;
 
     }
-    private void OnEnable() => HyperCausal.Manager.GameManager.onGameStateChanged += GameStateChangeCallback;
+    private void OnEnable() => GameManager.onGameStateChanged += GameStateChangeCallback;
 
     private void GameStateChangeCallback(GameState state)
     {
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private void StartMoving()
     {
         canMove = true;
-        PlayerAnimator?.Invoke(this, "isRunning");
+        PlayerAnimatorPerformAnimation?.Invoke(this, "isRunning");
 
 
     }

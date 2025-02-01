@@ -8,44 +8,42 @@ public enum GameState
     LevelCompleted,
     GameOver
 }
-namespace HyperCausal.Manager
+
+public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    public static Action<GameState> onGameStateChanged;
 
-    public class GameManager : MonoBehaviour
+    private GameState gameState;
+
+    private void Awake()
     {
-        public static GameManager instance;
-        public static Action<GameState> onGameStateChanged;
-
-        private GameState gameState;
-
-        private void Awake()
+        if (instance != null)
         {
-            if (instance != null)
-            {
-                Destroy(instance);
-            }
-            else
-            {
-                instance = this;
-            }
+            Destroy(instance);
         }
-        void Start()
+        else
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        public void SetGameState(GameState state)
-        {
-            gameState = state;
-            onGameStateChanged?.Invoke(gameState);
-            Debug.Log("GameState : " + gameState);
-
+            instance = this;
         }
     }
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void SetGameState(GameState state)
+    {
+        gameState = state;
+        onGameStateChanged?.Invoke(gameState);
+        Debug.Log("GameState : " + gameState);
+
+    }
 }
+
