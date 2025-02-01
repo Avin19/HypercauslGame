@@ -29,8 +29,6 @@ public class PlayerDetector : MonoBehaviour
 
             if (colliders[i].tag == "FinishLine")
             {
-
-
                 GameManager.instance.SetGameState(GameState.LevelCompleted);
             }
         }

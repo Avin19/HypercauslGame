@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     public event EventHandler<string> PlayerAnimatorPerformAnimation;
     public event EventHandler<string> PlayerAnimatorStopAnimation;
 
-
-
     public static PlayerController Instance { get; private set; }
 
     private Vector3 clickedScreenPosition;
@@ -67,7 +65,7 @@ public class PlayerController : MonoBehaviour
     private void StopMoving()
     {
         canMove = false;
-        PlayerAnimatorStopAnimation?.Invoke(this, "isRunning");
+        IdleAnimation?.Invoke(this, "isRunning");
     }
     private void Update()
     {
@@ -82,7 +80,7 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
 
-
+        PlayerAnimator?.Invoke(this, "isRunning");
         Vector3 moveDir = new Vector3(inputY, 0f, 1f).normalized;
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 

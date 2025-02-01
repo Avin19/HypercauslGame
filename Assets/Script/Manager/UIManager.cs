@@ -13,10 +13,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gamePanel;
 
-    private void Start()
-    {
-        menuPanel.SetActive(true);
-    }
     private void OnEnable()
     {
         playButton.onClick.AddListener(PlayButtonPressed);
@@ -36,8 +32,8 @@ public class UIManager : MonoBehaviour
     private void RetryButtonPressed()
     {
         SceneManager.LoadScene(0);
-        GameManager.instance.SetGameState(GameState.Game);
         menuPanel.SetActive(false);
+        GameManager.instance.SetGameState(GameState.Game);
 
     }
 

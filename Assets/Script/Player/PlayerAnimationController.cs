@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PlayerAnimationController : MonoBehaviour
 {
     private Animator animator;
+
 
     void Awake()
     {
@@ -14,13 +16,13 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void Start()
     {
-        PlayerController.Instance.PlayerAnimatorPerformAnimation += AnimationPerformed;
-        PlayerController.Instance.PlayerAnimatorStopAnimation += IdleAnimation;
+        PlayerController.Instance.PlayerAnimator += AnimationPerformed;
+        PlayerController.Instance.IdleAnimation += IdleAnimation;
     }
     private void OnDisable()
     {
-        PlayerController.Instance.PlayerAnimatorPerformAnimation -= AnimationPerformed;
-        PlayerController.Instance.PlayerAnimatorStopAnimation -= IdleAnimation;
+        PlayerController.Instance.PlayerAnimator -= AnimationPerformed;
+        PlayerController.Instance.IdleAnimation -= IdleAnimation;
     }
     private void AnimationPerformed(object sender, string e)
     {
@@ -30,6 +32,8 @@ public class PlayerAnimationController : MonoBehaviour
     {
         animator.SetBool(e, false);
     }
+
+
 }
 
 
