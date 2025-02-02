@@ -24,5 +24,13 @@ public class SoundManager : MonoBehaviour
     {
         audioSource.PlayOneShot(audioClips[0]);
     }
+    public void DoorSound()
+    {
+        audioSource.PlayOneShot(audioClips[1]);
+    }
+    public void FinishLine()
+    {
+        audioSource.PlayOneShot(audioClips[2]);
+    }
 
 }
