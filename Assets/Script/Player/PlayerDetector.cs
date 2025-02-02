@@ -6,7 +6,11 @@ public class PlayerDetector : MonoBehaviour
     [SerializeField] private CrowdSystem crowdSystem;
     private void Update()
     {
-        PlayerDetected();
+        if (transform.childCount > 0) { PlayerDetected(); }
+        else
+        {
+            GameManager.instance.SetGameState(GameState.GameOver);
+        }
     }
 
     private void PlayerDetected()

@@ -15,7 +15,7 @@ MonoBehaviour:
   level: 1
   panels:
   - {fileID: 5283758643577220611, guid: 631656bfbf7bcf14caf5b39e12628e0a, type: 3}
-  - {fileID: 5283758643577220611, guid: 8aeae7c575fb63e4597ad53ed0d7f02e, type: 3}
+  - {fileID: 5283758643577220611, guid: 35d7a443af6d85d4080bcb1a794adb22, type: 3}
   - {fileID: 5283758643577220611, guid: 8aeae7c575fb63e4597ad53ed0d7f02e, type: 3}
   - {fileID: 5283758643577220611, guid: 8aeae7c575fb63e4597ad53ed0d7f02e, type: 3}
   - {fileID: 5283758643577220611, guid: 8aeae7c575fb63e4597ad53ed0d7f02e, type: 3}

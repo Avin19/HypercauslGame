@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class Door : MonoBehaviour
+public class DoorPanel1 : MonoBehaviour
 {
     // Start is called before the first frame update
 
