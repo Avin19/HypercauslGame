@@ -72,10 +72,6 @@ public class GameManager : MonoBehaviour
         gameState = state;
         onGameStateChanged?.Invoke(gameState);
 
-        switch (gameState)
-        {
-
-        }
 
 
     }
