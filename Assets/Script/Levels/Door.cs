@@ -1,12 +1,6 @@
 using UnityEngine;
 using TMPro;
-public enum BouseType
-{
-    Addition,
-    Difference,
-    Multiple,
-    Divided,
-}
+
 public class Door : MonoBehaviour
 {
     // Start is called before the first frame update

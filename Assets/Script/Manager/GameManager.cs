@@ -1,13 +1,7 @@
-
 using UnityEngine;
 using System;
-public enum GameState
-{
-    Menu,
-    Game,
-    LevelCompleted,
-    GameOver
-}
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -40,18 +34,28 @@ public class GameManager : MonoBehaviour
     {
         gameLevel = PlayerPrefs.GetInt("CurrentLevel", 0);
     }
+    public int GetGameLevel()
+    {
+        return gameLevel;
+    }
+    public void SetGameLevel(int levelNum)
+    {
+        gameLevel = levelNum;
+        PlayerPrefs.SetInt("CurrentLevel", gameLevel);
+        SceneManager.LoadScene(0);
 
+    }
     void Start()
     {
 
         SettingUpLevel();
-        platformGenerator = new PlatformGenerator(currentlevel, environmentTransform);
-
 
     }
 
     private void SettingUpLevel()
     {
+
+
         if (levels.LevelList.Capacity > gameLevel)
         {
             currentlevel = levels.LevelList[gameLevel];
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
         {
             currentlevel = levels.LevelList[0];
         }
+        platformGenerator = new PlatformGenerator(currentlevel, environmentTransform);
     }
 
     // Update is called once per frame
