@@ -454,8 +454,8 @@ GameObject:
   - component: {fileID: 5283758643577220611}
   - component: {fileID: 5283758643577220610}
   - component: {fileID: 5283758643577220609}
-  - component: {fileID: 5279588940492941203}
   - component: {fileID: 2145126783906147762}
+  - component: {fileID: -6908492239765832932}
   m_Layer: 0
   m_Name: Plane 1
   m_TagString: Untagged
@@ -535,29 +535,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5279588940492941203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5283758643577220615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81260513e7cd5884db0617c229989824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightDoorText: {fileID: 6885307417194621337}
-  leftDoorText: {fileID: 8361775813699469111}
-  rightDoorBouseType: 0
-  rightDoorBouseAmount: 5
-  leftDoorBouseType: 2
-  leftDoorBouseAmount: 5
-  levelMultipler: 3
-  bouseColor: {r: 0.91764706, g: 0.07450977, b: 0.091603674, a: 0}
-  penaltyColor: {r: 0.8509804, g: 0.08627451, b: 0.8174951, a: 0}
-  materialRightDoorShader: {fileID: 2100000, guid: c1691150c5b77bb4ea315359068c346f, type: 2}
-  materialLeftDoorShader: {fileID: 2100000, guid: b0a44c3c7866fc84eaf69e5ed8bb2867, type: 2}
 --- !u!65 &2145126783906147762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -579,6 +556,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 11.395599, z: 0.2}
   m_Center: {x: 0, y: 4.48, z: -4.62}
+--- !u!114 &-6908492239765832932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283758643577220615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37dc4ca05bc9a2468f2203b144b5909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightDoorText: {fileID: 6885307417194621337}
+  leftDoorText: {fileID: 8361775813699469111}
+  rightDoorBouseType: 0
+  rightDoorBouseAmount: 5
+  leftDoorBouseType: 0
+  leftDoorBouseAmount: 5
+  levelMultipler: 1
+  bouseColor: {r: 1, g: 0, b: 0, a: 0}
+  penaltyColor: {r: 1, g: 0, b: 0.8658824, a: 0}
+  materialRightDoorShader: {fileID: 2100000, guid: c1691150c5b77bb4ea315359068c346f, type: 2}
+  materialLeftDoorShader: {fileID: 2100000, guid: b0a44c3c7866fc84eaf69e5ed8bb2867, type: 2}
 --- !u!1 &5634555576238723631
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,13 @@ public class PlayerDetector : MonoBehaviour
                 door.Disable();
 
             }
+            if (colliders[i].TryGetComponent(out DoorPanel1 door1))
+            {
+                int doorAmount = door1.GetDoorAmount(transform.position.x);
+                BouseType bouseType = door1.GetBouseType(transform.position.x);
+                crowdSystem.ApplyBonus(doorAmount, bouseType);
+                door1.Disable();
+            }
 
 
             if (colliders[i].tag == "FinishLine")

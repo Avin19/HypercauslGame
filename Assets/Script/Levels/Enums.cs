@@ -7,8 +7,8 @@ using UnityEngine;
 public enum BouseType
 {
     Addition,
-    Difference,
     Multiple,
+    Difference,
     Divided,
 }
 

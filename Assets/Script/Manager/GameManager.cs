@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void SettingUpLevel()
     {
-        platformGenerator = new PlatformGenerator(currentlevel, environmentTransform);
+
 
         if (levels.LevelList.Capacity > gameLevel)
         {
@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         {
             currentlevel = levels.LevelList[0];
         }
+        platformGenerator = new PlatformGenerator(currentlevel, environmentTransform);
     }
 
     // Update is called once per frame

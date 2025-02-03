@@ -28,11 +28,11 @@ public class DoorPanel1 : MonoBehaviour
         {
             return BouseType.Addition;
         }
-        else if (index == 1)
+        else if (index == 2)
         {
             return BouseType.Difference;
         }
-        else if (index == 2)
+        else if (index == 1)
         {
             return BouseType.Multiple;
         }
@@ -46,8 +46,8 @@ public class DoorPanel1 : MonoBehaviour
     {
         rightDoorBouseAmount = Random.Range(1, 5 * levelMultipler);
         leftDoorBouseAmount = Random.Range(1, 5 * levelMultipler);
-        rightDoorBouseType = ReturnRandomEnum(Random.Range(0, 4));
-        leftDoorBouseType = ReturnRandomEnum(Random.Range(0, 4));
+        rightDoorBouseType = ReturnRandomEnum(Random.Range(0, 2));
+        leftDoorBouseType = ReturnRandomEnum(Random.Range(0, 2));
         transform.GetComponent<BoxCollider>().enabled = true;
 
         ConfigureDoor();
