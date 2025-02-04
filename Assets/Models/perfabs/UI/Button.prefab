@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1044950713366289040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -286,6 +286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247912136523ef541aea9db3736661e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinButton: {fileID: 1683253675202363217}
+  skinImage: {fileID: 5044424576896626509}
+  lockImage: {fileID: 7452424549568510985}
+  selector: {fileID: 987482245064817135}
 --- !u!1 &7452424549568510985
 GameObject:
   m_ObjectHideFlags: 0

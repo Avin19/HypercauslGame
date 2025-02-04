@@ -11,16 +11,7 @@ public class SkinButton : MonoBehaviour
     [SerializeField] private GameObject lockImage;
     [SerializeField] private GameObject selector;
     private bool unlocked;
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void Configure(Sprite skinSprite, bool _unlocked)
     {
         skinImage.sprite = skinSprite;
@@ -36,7 +27,10 @@ public class SkinButton : MonoBehaviour
         }
 
     }
-
+    public Button GetButton()
+    {
+        return skinButton;
+    }
     private void Lock()
     {
         skinButton.interactable = false;
@@ -44,11 +38,25 @@ public class SkinButton : MonoBehaviour
         lockImage.gameObject.SetActive(true);
     }
 
-    private void Unlocked()
+    public void Unlocked()
     {
         skinButton.interactable = true;
         skinImage.gameObject.SetActive(true);
         lockImage.gameObject.SetActive(false);
         unlocked = true;
+    }
+
+    public void Selector()
+    {
+        selector.SetActive(true);
+    }
+    public void Deselector()
+    {
+        selector.SetActive(false);
+    }
+
+    public bool IsUnlocked()
+    {
+        return unlocked;
     }
 }
