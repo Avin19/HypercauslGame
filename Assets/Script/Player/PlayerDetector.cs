@@ -35,6 +35,7 @@ public class PlayerDetector : MonoBehaviour
                 int doorAmount = door1.GetDoorAmount(transform.position.x);
                 BouseType bouseType = door1.GetBouseType(transform.position.x);
                 crowdSystem.ApplyBonus(doorAmount, bouseType);
+                SoundManager.instance.DoorSound();
                 door1.Disable();
             }
 

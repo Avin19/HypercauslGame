@@ -5,21 +5,69 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header(" Element")]
+    [Header("Button")]
     // Start is called before the first frame update
+
     [SerializeField] private Button playButton;
     [SerializeField] private Button retryButton;
     [SerializeField] private Button nextButton;
+    [SerializeField] private Button purchaseButton;
+    [SerializeField] private Button backButton;
+    [SerializeField] private Button settingButton;
+    [SerializeField] private Button shopButton;
+    [SerializeField] private Button closeButton;
+
+    [Header("Panel")]
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject nextLevelPanel;
+    [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject settingpanel;
+
+    [SerializeField] private ShopManager shopManager;
+
+
 
     private void OnEnable()
     {
         playButton.onClick.AddListener(PlayButtonPressed);
         retryButton.onClick.AddListener(RetryButtonPressed);
         nextButton.onClick.AddListener(NextButtonPressed);
+        purchaseButton.onClick.AddListener(PurchaseButtonPressed);
+        settingButton.onClick.AddListener(SettingButtonPressed);
+        backButton.onClick.AddListener(BackButtonPressed);
+        shopButton.onClick.AddListener(ShopButtonPressed);
+        closeButton.onClick.AddListener(CloseButtonPressed);
         GameManager.onGameStateChanged += OnGameStateChanged;
+    }
+
+    private void CloseButtonPressed()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void ShopButtonPressed()
+    {
+        Time.timeScale = 0f;
+        shopPanel.SetActive(true);
+    }
+
+    private void BackButtonPressed()
+    {
+        Time.timeScale = 1f;
+        shopPanel.SetActive(false);
+
+    }
+
+    private void SettingButtonPressed()
+    {
+        Time.timeScale = 0f;
+        settingpanel.SetActive(true);
+    }
+
+    private void PurchaseButtonPressed()
+    {
+        shopManager.PurchaseSkin();
     }
 
     private void NextButtonPressed()
@@ -59,6 +107,11 @@ public class UIManager : MonoBehaviour
         playButton.onClick.RemoveListener(PlayButtonPressed);
         retryButton.onClick.RemoveListener(RetryButtonPressed);
         nextButton.onClick.RemoveListener(NextButtonPressed);
+        purchaseButton.onClick.RemoveListener(PurchaseButtonPressed);
+        settingButton.onClick.RemoveListener(SettingButtonPressed);
+        backButton.onClick.RemoveListener(BackButtonPressed);
+        shopButton.onClick.RemoveListener(ShopButtonPressed);
+        closeButton.onClick.RemoveListener(CloseButtonPressed);
         GameManager.onGameStateChanged -= OnGameStateChanged;
     }
 
@@ -70,4 +123,6 @@ public class UIManager : MonoBehaviour
         menuPanel.SetActive(false);
 
     }
+
+
 }

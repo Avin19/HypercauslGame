@@ -577,7 +577,7 @@ MonoBehaviour:
   rightDoorBouseAmount: 5
   leftDoorBouseType: 0
   leftDoorBouseAmount: 5
-  levelMultipler: 1
+  levelMultipler: 3
   bouseColor: {r: 1, g: 0, b: 0, a: 0}
   penaltyColor: {r: 1, g: 0, b: 0.8658824, a: 0}
   materialRightDoorShader: {fileID: 2100000, guid: c1691150c5b77bb4ea315359068c346f, type: 2}
