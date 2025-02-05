@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 
 
@@ -11,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int gameLevel;
     [SerializeField] private Levels levels;
     private LevelsDesign currentlevel;
-    private PlatformGenerator platformGenerator;
+
     [SerializeField] private Transform environmentTransform;
 
 
@@ -47,8 +46,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
         SettingUpLevel();
+        PLayerCurrentGameLevel();
 
     }
 
@@ -64,7 +63,7 @@ public class GameManager : MonoBehaviour
         {
             currentlevel = levels.LevelList[0];
         }
-        platformGenerator = new PlatformGenerator(currentlevel, environmentTransform);
+        new PlatformGenerator(currentlevel, environmentTransform);
     }
 
     // Update is called once per frame
@@ -74,6 +73,8 @@ public class GameManager : MonoBehaviour
         onGameStateChanged?.Invoke(gameState);
 
 
+
     }
+
 }
 
