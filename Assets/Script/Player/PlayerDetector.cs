@@ -26,6 +26,7 @@ public class PlayerDetector : MonoBehaviour
                 int doorAmount = door.GetDoorAmount(transform.position.x);
                 BouseType bouseType = door.GetBouseType(transform.position.x);
                 crowdSystem.ApplyBonus(doorAmount, bouseType);
+                SoundManager.instance.DoorSound();
                 door.Disable();
 
             }
@@ -41,6 +42,14 @@ public class PlayerDetector : MonoBehaviour
             if (colliders[i].tag == "FinishLine")
             {
                 GameManager.instance.SetGameState(GameState.LevelCompleted);
+                SoundManager.instance.FinishLine();
+            }
+            if (colliders[i].tag == "Coin")
+            {
+                int coin = DataManager.instance.GetCoin();
+                DataManager.instance.SetCoin(coin + 1);
+                SoundManager.instance.CoinPickUp();
+                Destroy(colliders[i].gameObject);
             }
         }
     }

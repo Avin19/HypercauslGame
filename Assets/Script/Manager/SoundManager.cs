@@ -32,5 +32,9 @@ public class SoundManager : MonoBehaviour
     {
         audioSource.PlayOneShot(audioClips[2]);
     }
+    public void CoinPickUp()
+    {
+        audioSource.PlayOneShot(audioClips[3]);
+    }
 
 }
