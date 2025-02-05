@@ -31,3 +31,9 @@ This game remake is created by Developer Name.
 If you have any feedback, suggestions, or bug reports, please open an issue on GitHub or contact us directly.
 
 Prepare for liftoff and enjoy your journey to the International Space Station! 🚀
+
+
+## TO DO List 
+
+[] - Coin update 
+[] - Purchase - Coin reduce 
