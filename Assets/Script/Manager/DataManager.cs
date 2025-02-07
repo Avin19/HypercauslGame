@@ -28,6 +28,8 @@ public class DataManager : MonoBehaviour
     }
     public void SetCoin(int _coin)
     {
+        coin = _coin;
+        PlayerPrefs.SetInt("Coin", coin);
         coinText.text = _coin.ToString();
     }
 

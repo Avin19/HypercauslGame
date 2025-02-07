@@ -5313,6 +5313,7 @@ MonoBehaviour:
   backButton: {fileID: 692035206}
   settingButton: {fileID: 1270603942}
   shopButton: {fileID: 22837833}
+  closeButton: {fileID: 917712106}
   menuPanel: {fileID: 1236755955}
   gamePanel: {fileID: 606155191}
   nextLevelPanel: {fileID: 1618471668}

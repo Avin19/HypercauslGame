@@ -43,25 +43,27 @@ public class UIManager : MonoBehaviour
 
     private void CloseButtonPressed()
     {
-        throw new NotImplementedException();
+        settingpanel.SetActive(false);
+
+        // Game State to Pause 
     }
 
     private void ShopButtonPressed()
     {
-        Time.timeScale = 0f;
+        GameManager.instance.SetGameState(GameState.Pause);
         shopPanel.SetActive(true);
     }
 
     private void BackButtonPressed()
     {
-        Time.timeScale = 1f;
+        GameManager.instance.SetGameState(GameState.Game);
         shopPanel.SetActive(false);
 
     }
 
     private void SettingButtonPressed()
     {
-        Time.timeScale = 0f;
+        GameManager.instance.SetGameState(GameState.Pause);
         settingpanel.SetActive(true);
     }
 
