@@ -9,6 +9,7 @@ using UnityEditor.PackageManager.Requests;
 public class ScriptDownloaderEditor : EditorWindow
 {
     private bool createScripts = true;
+    private bool createSprite = true;
     private bool createMaterials = true;
     private bool createMusic = true;
     private bool createPrefabs = true;
@@ -16,6 +17,9 @@ public class ScriptDownloaderEditor : EditorWindow
     private bool createTextures = true;
     private bool createEditor = true;
     private bool downloadGitIgnore = true;
+
+    private static string unityPackageUrl = "https://github.com/Avin19/UnityTools/blob/main/UIPackage.unitypackage"; // Update with your actual URL
+    private static string localPackagePath = "\\Assets\\DownloadedPackages\\MyPackage.unitypackage"; // Local storage path
 
     private string readmeContent =
 @"# Unity Project Setup
@@ -57,10 +61,12 @@ Prepare for liftoff and enjoy your journey to the International Space Station! ð
         GetWindow<ScriptDownloaderEditor>("Script Downloader");
     }
 
+
     private void OnGUI()
     {
         GUILayout.Label("Folder Setup", EditorStyles.boldLabel);
         createScripts = EditorGUILayout.Toggle("Scripts", createScripts);
+        createSprite = EditorGUILayout.Toggle("Sprite", createSprite);
         createMaterials = EditorGUILayout.Toggle("Materials", createMaterials);
         createMusic = EditorGUILayout.Toggle("Music", createMusic);
         createPrefabs = EditorGUILayout.Toggle("Prefabs", createPrefabs);
@@ -72,7 +78,11 @@ Prepare for liftoff and enjoy your journey to the International Space Station! ð
         {
             CreateSelectedFolders();
         }
-
+        GUILayout.Label("Unity Package Management", EditorStyles.boldLabel);
+        if (GUILayout.Button("Download & Install UnityPackage"))
+        {
+            _ = DownloadAndInstallPackage();
+        }
         GUILayout.Label("README Setup", EditorStyles.boldLabel);
         readmeContent = EditorGUILayout.TextArea(readmeContent, GUILayout.Height(200));
 
@@ -101,6 +111,7 @@ Prepare for liftoff and enjoy your journey to the International Space Station! ð
             _ = AddRemoveNecessaryPackages(); // Fire and forget async call
         }
     }
+
 
     private void CreateSelectedFolders()
     {
@@ -136,6 +147,28 @@ Prepare for liftoff and enjoy your journey to the International Space Station! ð
         AssetDatabase.Refresh();
     }
 
+    private static async Task DownloadAndInstallPackage()
+    {
+        string packageUrl = "https://github.com/Avin19/UnityTools/raw/main/UIPackage.unitypackage"; // Use the correct direct URL
+        string packagePath = Path.Combine(Application.dataPath, "..", "UIPackage.unitypackage"); // Save outside "Assets"
+
+        await DownloadFileAsync(packageUrl, packagePath); // Download the package
+
+        InstallUnityPackage(packagePath);
+    }
+
+    private static void InstallUnityPackage(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            AssetDatabase.ImportPackage(filePath, true); // Import with UI confirmation
+            UnityEngine.Debug.Log($"Unity Package installed: {filePath}");
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("Unity Package not found!");
+        }
+    }
     private void CreateReadmeFile()
     {
         string projectPath = Application.dataPath.Replace("/Assets", "");

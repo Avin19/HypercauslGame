@@ -71,6 +71,15 @@ public class GameManager : MonoBehaviour
     {
         gameState = state;
         onGameStateChanged?.Invoke(gameState);
+        switch (state)
+        {
+            case GameState.Pause:
+                Time.timeScale = 0f;
+                break;
+            case GameState.Game:
+                Time.timeScale = 1f;
+                break;
+        }
 
 
 

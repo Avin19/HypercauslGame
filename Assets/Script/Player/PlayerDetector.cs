@@ -40,15 +40,16 @@ public class PlayerDetector : MonoBehaviour
             }
 
 
-            if (colliders[i].tag == "FinishLine")
+            if (colliders[i].CompareTag("FinishLine"))
             {
                 GameManager.instance.SetGameState(GameState.LevelCompleted);
                 SoundManager.instance.FinishLine();
             }
-            if (colliders[i].tag == "Coin")
+            if (colliders[i].CompareTag("Coin"))
             {
-                int coin = DataManager.instance.GetCoin();
-                DataManager.instance.SetCoin(coin + 1);
+                int _coin = DataManager.instance.GetCoin();
+                DataManager.instance.SetCoin(_coin + 1);
+                crowdSystem.PlacementOfRunner();
                 SoundManager.instance.CoinPickUp();
                 Destroy(colliders[i].gameObject);
             }
