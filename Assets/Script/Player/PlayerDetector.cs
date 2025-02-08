@@ -4,6 +4,7 @@ public class PlayerDetector : MonoBehaviour
 {
     [Header(" Elements ")]
     [SerializeField] private CrowdSystem crowdSystem;
+    [SerializeField] private int playerNumber;
     private void Update()
     {
         if (transform.childCount > 0) { PlayerDetected(); }
@@ -11,8 +12,12 @@ public class PlayerDetector : MonoBehaviour
         {
             GameManager.instance.SetGameState(GameState.GameOver);
         }
+        playerNumber = transform.childCount;
     }
-
+    public int PlayerNumber()
+    {
+        return playerNumber;
+    }
     private void PlayerDetected()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 2, 1);

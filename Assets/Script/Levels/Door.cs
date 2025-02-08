@@ -4,8 +4,9 @@ using TMPro;
 public class Door : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    [Header(" Elemeets ")]
+    [Header(" Nature")]
+    [SerializeField] private Transform[] nature;
+    [Header(" Elements ")]
     [SerializeField] private TextMeshPro rightDoorText;
     [SerializeField] private TextMeshPro leftDoorText;
 
@@ -49,11 +50,33 @@ public class Door : MonoBehaviour
         rightDoorBouseType = ReturnRandomEnum(Random.Range(0, 4));
         leftDoorBouseType = ReturnRandomEnum(Random.Range(0, 4));
         transform.GetComponent<BoxCollider>().enabled = true;
-
+        RandomNature();
         ConfigureDoor();
 
 
     }
+
+    private void RandomNature()
+    {
+        for (int i = 0; i < nature.Length; i++)
+        {
+            nature[i].gameObject.SetActive(RandomBool());
+        }
+    }
+
+    private bool RandomBool()
+    {
+        int index = Random.Range(0, 2);
+        if (index == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private void Start()
     {
         Trigger();

@@ -1213,6 +1213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crowdSystem: {fileID: 377483872}
+  playerNumber: 0
 --- !u!1 &462597107
 GameObject:
   m_ObjectHideFlags: 0
