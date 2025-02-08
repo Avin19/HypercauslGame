@@ -49,7 +49,7 @@ public class PlayerDetector : MonoBehaviour
             {
                 int _coin = DataManager.instance.GetCoin();
                 DataManager.instance.SetCoin(_coin + 1);
-                Debug.Log(_coin);
+                crowdSystem.PlacementOfRunner();
                 SoundManager.instance.CoinPickUp();
                 Destroy(colliders[i].gameObject);
             }

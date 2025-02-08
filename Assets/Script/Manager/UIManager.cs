@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button backButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private Button shopButton;
-    [SerializeField] private Button closeButton;
+    [SerializeField] private Button closeSettingButton;
 
     [Header("Panel")]
     [SerializeField] private GameObject menuPanel;
@@ -37,33 +37,43 @@ public class UIManager : MonoBehaviour
         settingButton.onClick.AddListener(SettingButtonPressed);
         backButton.onClick.AddListener(BackButtonPressed);
         shopButton.onClick.AddListener(ShopButtonPressed);
-        closeButton.onClick.AddListener(CloseButtonPressed);
+        closeSettingButton.onClick.AddListener(CloseButtonPressed);
         GameManager.onGameStateChanged += OnGameStateChanged;
     }
 
     private void CloseButtonPressed()
     {
+
+        //Setting close button 
         settingpanel.SetActive(false);
+        settingButton.gameObject.SetActive(true);
 
         // Game State to Pause 
     }
 
     private void ShopButtonPressed()
     {
-        GameManager.instance.SetGameState(GameState.Pause);
+
+        //Shop Button Press 
+        settingButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(true);
         shopPanel.SetActive(true);
     }
 
     private void BackButtonPressed()
     {
-        GameManager.instance.SetGameState(GameState.Game);
+
+        settingButton.gameObject.SetActive(true);
+        backButton.gameObject.SetActive(false);
+
         shopPanel.SetActive(false);
 
     }
 
     private void SettingButtonPressed()
     {
-        GameManager.instance.SetGameState(GameState.Pause);
+        settingButton.gameObject.SetActive(false);
+
         settingpanel.SetActive(true);
     }
 
@@ -113,7 +123,7 @@ public class UIManager : MonoBehaviour
         settingButton.onClick.RemoveListener(SettingButtonPressed);
         backButton.onClick.RemoveListener(BackButtonPressed);
         shopButton.onClick.RemoveListener(ShopButtonPressed);
-        closeButton.onClick.RemoveListener(CloseButtonPressed);
+        closeSettingButton.onClick.RemoveListener(CloseButtonPressed);
         GameManager.onGameStateChanged -= OnGameStateChanged;
     }
 
